@@ -1,13 +1,27 @@
-// src/App.js
-import React from 'react';
-import RegistrationForm from './component/RegistrationForm';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import RegistrationForm from "./pages/RegistrationForm";
+import LoginForm from "./pages/Login";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <RegistrationForm />
-    </div>
+    <Router>
+      <Routes>
+        {/* Redirect root ("/") to the login page */}
+        <Route path="/" element={<Navigate to="/login" />} />
+
+        {/* Registration route */}
+        <Route path="/register" element={<RegistrationForm />} />
+
+        {/* Login route */}
+        <Route path="/login" element={<LoginForm />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

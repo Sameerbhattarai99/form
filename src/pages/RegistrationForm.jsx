@@ -1,5 +1,5 @@
-import React from 'react';
-import { useFormik } from 'formik';
+import { useFormik } from "formik";
+import { Link } from "react-router-dom";
 import {
   Button,
   TextField,
@@ -11,22 +11,21 @@ import {
   Container,
   Box,
   Typography,
-} from '@mui/material';
-import { validationSchema } from './validationschema';
-
+} from "@mui/material";
+import { validationSchema } from "../schema/registrationschema";
 
 const RegistrationForm = () => {
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      gender: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      gender: "",
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log('Form data', values);
+      console.log("Form data", values);
     },
   });
 
@@ -115,6 +114,9 @@ const RegistrationForm = () => {
           >
             Submit
           </Button>
+          <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+            Already have an account? <Link to="/login">Login here</Link>
+          </Typography>
         </form>
       </Box>
     </Container>
